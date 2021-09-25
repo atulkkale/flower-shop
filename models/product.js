@@ -1,36 +1,34 @@
-const { json } = require('body-parser')
-const fs = require('fs')
-const path = require('path')
+const getDb = require('../util/database').getDb
 
-const p = path.join(path.dirname(process.mainModule.filename),
-'data',
-'products.json')
-
-const getProductsFromFile = cb => {
-    fs.readFile(p, (err, fileContent) => {
-        if(err) {
-            cb([])
-        } else {
-            cb(JSON.parse(fileContent))
-        }
-    })
-}
-
-module.exports = class Product {
-    constructor(t) {
-        this.title = t
+class Product {
+    constructor(title, price, description, imageUrl) {
+        this.title = title
+        this.price = price
+        this.description = description
+        this.imageUrl = imageUrl
     }
 
     save() {
-        getProductsFromFile(products => {
-            products.push(this)
-            fs.writeFile(p, JSON.stringify(products), (err) => {
+        const db = getDb()
+        return db.collection('products').insertOne(this)
+            .then(result => {
+                console.log(result)
+            }).catch(err => {
                 console.log(err)
             })
-        })
     }
 
-    static fetchAll(cb) {
-        getProductsFromFile(cb)
+    static fetchAll() {
+        const db = getDb()
+        return db.collection('products').find().toArray()
+        .then(products => {
+            console.log(products)
+            return products
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
+
+module.exports = Product

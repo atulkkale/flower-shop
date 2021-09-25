@@ -8,9 +8,21 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 exports.postAddProduct = (req, res, next) => {
-    const product = new Product(req.body.title)
+    const title = req.body.title
+    const price = req.body.price
+    const imageUrl = req.body.imageUrl
+    const description = req.body.description
+
+    const product = new Product(title, price, description, imageUrl)
+
     product.save()
-    res.redirect("/")
+    .then(result => {
+        console.log("Products created")
+        res.redirect("/")
+    }).catch(err => {
+        console.log(err)
+    })
+
 }
 
 exports.getIndex = (req, res, next) => {
@@ -28,9 +40,14 @@ exports.getAbout = (req, res, next) => {
 }
 
 exports.getNewShop = (req, res, next) => {
-    res.render('newshop', {
-        pageTitle: 'Shop', 
-        path: '/newshop'
+    Product.fetchAll()
+    .then(products => {
+        console.log(products)
+        res.render('newshop', {
+            pageTitle: 'Shop', 
+            prods: products,
+            path: '/newshop'
+        })
     })
 }
 
