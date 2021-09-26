@@ -2,20 +2,22 @@ const path = require('path')
 
 const express = require('express')
 
-const productsController = require('../controllers/products')
+const shopController = require('../controllers/shop')
 
 const router = express.Router()
 
-router.get("/about", productsController.getAbout)
+router.get("/about", shopController.getAbout)
 
-router.get("/newshop", productsController.getNewShop)
+router.get("/shop", shopController.getShop)
 
-router.get("/portfolio", productsController.getPortfolio)
+router.get("/shop/:prodId", shopController.getProductById)
 
-router.get("/contact", productsController.getContact)
+router.get("/portfolio", shopController.getPortfolio)
 
-router.get("/blog", productsController.getBlog)
+router.get("/contact", shopController.getContact)
 
-router.get("/", productsController.getIndex)
+router.get("/blog", shopController.getBlog)
+
+router.get("/", shopController.getIndex)
 
 module.exports = router

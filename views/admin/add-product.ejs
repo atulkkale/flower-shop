@@ -1,0 +1,65 @@
+<%- include('../includes/admin-head.ejs') %>
+
+<body>
+
+    <div id="wrapper">
+
+        <%- include('../includes/admin-navigation.ejs') %>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Add products
+                            <small>Subheading</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Add products
+                            </li>
+                        </ol>
+                        <main>
+                            <form class="product-form" action="/admin/add-product" method="POST">
+                                <div>
+                                    <label for="title">Title</label><br>
+                                    <input type="text" name="title" id="title"><br>
+                                    <label for="price">Price</label><br>
+                                    <input type="text" name="price" id="price"><br>
+                                    <label for="imageUrl">Image url</label><br>
+                                    <input type="text" name="imageUrl" id="imageUrl"><br>
+                                    <label for="description">Description</label><br>
+                                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                </div>
+                        
+                                <button type="submit">Add Product</button>
+                            </form>
+                        </main>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/admincss/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/admincss/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
