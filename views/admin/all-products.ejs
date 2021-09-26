@@ -1,0 +1,86 @@
+<%- include('../includes/admin-head.ejs') %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <%- include('../includes/admin-navigation.ejs') %>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            All products
+                            <small>Subheading</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> All products
+                            </li>
+                        </ol>
+                        <!-- All Products Area -->
+                        <div class="col-12 col-md-8 col-lg-9">
+                            <div class="shop-products-area">
+                                <div class="row">
+                                    <% if (prods.length > 0) { %>
+                                        <% for (let product of prods) { %>
+                                        <!-- Single Product Area -->
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <div class="single-product-area mb-50">
+                                                <!-- Product Image -->
+                                                <div class="product-img">
+                                                    <a href="shop-details.html"><img src="<%= product.imageUrl %>" alt=""></a>
+                                                    <!-- Product Tag -->
+                                                    <div class="product-tag">
+                                                        <a href="#">Hot</a>
+                                                    </div>
+                                                    <div class="product-meta d-flex">
+                                                        <a href="/admin/edit-product/<%= product._id %>?edit=true" class="add-to-cart-btn">Edit</a>
+                                                        <a href="cart.html" class="add-to-cart-btn">Delete</a>
+                                                    </div>
+                                                </div>
+                                                <!-- Product Info -->
+                                                <div class="product-info mt-15 text-center">
+                                                    <a href="/shop/<%= product._id %>">
+                                                        <p><%= product.title %></p>
+                                                    </a>
+                                                    <h6>$<%= product.price %></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                    <% } else { %>
+                                        <h1>No products found.</h1>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/admincss/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/admincss/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -227,3 +227,141 @@ ul.alert-dropdown {
 {
     padding: 0;
 }
+
+/* ========================================
+products styling from home templeate start.
+===========================================*/
+
+.shop-products-area .pagination {
+    position: relative;
+    z-index: 1;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end; }
+  
+  
+    .shop-products-area .pagination .page-item .page-link {
+      color: #707070;
+      width: 46px;
+      height: 46px;
+      border-radius: 0;
+      text-align: center;
+      border: 1px solid #ebebeb;
+      font-size: 18px;
+      line-height: 44px;
+      padding: 0;
+      margin: 0 10px;
+      background-color: #f5f5f5; }
+  
+      .shop-products-area .pagination .page-item .page-link:hover, .shop-products-area .pagination .page-item .page-link:focus {
+        border-color: #70c745;
+        background-color: #70c745;
+        color: #ffffff; }
+        /* :: 7.0 New Arrivals Products Area */
+.single-product-area {
+    position: relative;
+    z-index: 1;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms; }
+    .single-product-area .product-img {
+      position: relative;
+      z-index: 1;
+      -webkit-transition-duration: 500ms;
+      transition-duration: 500ms; }
+      .single-product-area .product-img a {
+        display: block; }
+  
+      .single-product-area .product-img img {
+        position: relative;
+        z-index: 1;
+        width: 100%; }
+  
+      .single-product-area .product-img .product-tag a {
+        background-color: #429edf;
+        border-radius: 2px;
+        display: inline-block;
+        height: 20px;
+        padding: 0 10px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 12px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10; }
+  
+      .single-product-area .product-img .product-tag.sale-tag a {
+        background-color: #e61d47; }
+      .single-product-area .product-img .product-meta {
+        position: absolute;
+        bottom: 30px;
+        left: 15px;
+        right: 15px;
+        z-index: 100;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms; }
+  
+        .single-product-area .product-img .product-meta a {
+          font-size: 16px;
+          color: #ffffff;
+          font-weight: 600;
+          background-color: #303030;
+          -webkit-box-flex: 0;
+          -ms-flex: 0 0 50px;
+          flex: 0 0 50px;
+          max-width: 50px;
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-transform: uppercase;
+          text-align: center; }
+  
+          .single-product-area .product-img .product-meta a:hover, .single-product-area .product-img .product-meta a:focus {
+            background-color: #70c745; }
+  
+          @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            .single-product-area .product-img .product-meta a {
+              font-size: 11px; } }
+  
+          @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .single-product-area .product-img .product-meta a {
+              font-size: 11px; } }
+  
+          @media only screen and (max-width: 767px) {
+            .single-product-area .product-img .product-meta a {
+              font-size: 14px; } }
+  
+        .single-product-area .product-img .product-meta .add-to-cart-btn {
+          -webkit-box-flex: 0;
+          -ms-flex: 0 0 calc(100% - 100px);
+          flex: 0 0 calc(100% - 100px);
+          max-width: calc(100% - 100px);
+          width: calc(100% - 100px);
+          border-left: 1px solid rgba(235, 235, 235, 0.5);
+          border-right: 1px solid rgba(235, 235, 235, 0.5); }
+  
+    .single-product-area .product-info a p {
+      margin-bottom: 0;
+      -webkit-transition-duration: 300ms;
+      transition-duration: 300ms; }
+  
+      .single-product-area .product-info a p:hover, .single-product-area .product-info a p:focus {
+        color: #70c745; }
+    .single-product-area .product-info h6 {
+      margin-bottom: 0;
+      font-size: 18px; }
+  
+    .single-product-area:hover .product-img {
+      box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.15); }
+      .single-product-area:hover .product-img .product-meta {
+        visibility: visible;
+        opacity: 1; }
+
+        .d-flex { display: flex;}
+/* ========================================
+products styling from home templeate end.
+===========================================*/
