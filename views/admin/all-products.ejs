@@ -45,7 +45,11 @@
                                                     </div>
                                                     <div class="product-meta d-flex">
                                                         <a href="/admin/edit-product/<%= product._id %>?edit=true" class="add-to-cart-btn">Edit</a>
-                                                        <a href="cart.html" class="add-to-cart-btn">Delete</a>
+                                                        <form action="/admin/delete-product" method="POST">
+                                                            <input type="hidden" name="prodId" value="<%= product._id %>">
+                                                            
+                                                            <button type="submit" class="add-to-cart-btn">Delete</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!-- Product Info -->

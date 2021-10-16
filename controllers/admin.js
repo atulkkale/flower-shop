@@ -3,7 +3,8 @@ const Product = require('../models/product')
 exports.getAdminHome = (req, res, next) => {
     res.render('admin/admin-home', {
         pageTitle: 'Admin',
-        path: '/admin'
+        path: '/admin',
+        isAuthenticated: req.session.isLoggedIn
     })
 }
 
@@ -11,7 +12,8 @@ exports.getAddProduct = (req, res, next) => {
     res.render('admin/edit-product', {
         pageTitle: 'Add products',
         path: '/admin/edit-product',
-        editing: false
+        editing: false,
+        isAuthenticated: req.session.isLoggedIn
     })
 }
 
@@ -21,12 +23,12 @@ exports.postAddProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl
     const description = req.body.description
 
-    const product = new Product(title, price, description, imageUrl)
+    const product = new Product(title, price, description, imageUrl, null, req.user._id)
 
     product.save()
     .then(result => {
         console.log("Products created")
-        res.redirect("/")
+        res.redirect("/admin/all-products")
     }).catch(err => {
         console.log(err)
     })
@@ -39,7 +41,8 @@ exports.getAllProducts = (req, res, next) => {
         res.render('admin/all-products', {
             pageTitle: 'All products', 
             prods: products,
-            path: '/newshop'
+            path: '/newshop',
+            isAuthenticated: req.session.isLoggedIn
         })
     })
 }
@@ -56,7 +59,8 @@ exports.getEditProduct = (req, res, next) => {
             pageTitle: "Edit product",
             product: product,
             path: "/edit-product",
-            editing: true
+            editing: true,
+            isAuthenticated: req.session.isLoggedIn
         })
     })
 }
@@ -74,6 +78,19 @@ exports.postEditProduct = (req, res, next) => {
     product.save()
     .then(result => {
         console.log("Product updated!")
+        res.redirect("/admin/all-products")
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+exports.postDeleteProduct = (req, res, next) => {
+    const prodId = req.body.prodId
+    console.log(prodId)
+    Product.deleteById(prodId)
+    .then(result => {
+        console.log(result, "deleted")
         res.redirect("/admin/all-products")
     })
     .catch(err => {
