@@ -4,8 +4,7 @@ const User = require('../models/user')
 exports.getAbout = (req, res, next) => {
     res.render('shop/about', {
         pageTitle: 'About', 
-        path: '/about',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/about'
     })
 }
 
@@ -16,8 +15,7 @@ exports.getShop = (req, res, next) => {
         res.render('shop/shop', {
             pageTitle: 'Shop', 
             prods: products,
-            path: '/newshop',
-            isAuthenticated: req.session.isLoggedIn
+            path: '/newshop'
         })
     })
 }
@@ -29,8 +27,7 @@ exports.getProductById = (req, res, next) => {
         res.render('shop/shop-details',{
             pageTitle: product.title,
             path: '/newshop',
-            prod: product,
-            isAuthenticated: req.session.isLoggedIn
+            prod: product
         })
     })
 }
@@ -41,8 +38,7 @@ exports.getCart = (req, res, next) => {
         res.render('shop/cart', {
             pageTitle: 'Cart', 
             path: '/Cart',
-            products: products,
-            isAuthenticated: req.session.isLoggedIn
+            products: products
         })
     })
 }
@@ -86,8 +82,7 @@ exports.getOrders = (req, res, next) => {
         res.render('shop/orders', {
             pageTitle: 'Your orders', 
             path: '/orders',
-            orders: orders,
-            isAuthenticated: req.session.isLoggedIn
+            orders: orders
         })
     })
     .catch(err => console.log(err))
@@ -96,31 +91,27 @@ exports.getOrders = (req, res, next) => {
 exports.getPortfolio = (req, res, next) => {
     res.render('shop/portfolio', {
         pageTitle: 'Portfolio', 
-        path: '/portfolio',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/portfolio'
     })
 }
 
 exports.getContact = (req, res, next) => {
     res.render('shop/contact', {
         pageTitle: 'Contact', 
-        path: '/contact',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/contact'
     })
 }
 
 exports.getBlog = (req, res, next) => {
     res.render('shop/blog', {
         pageTitle: 'Blogs', 
-        path: '/blog',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/blog'
     })
 }
 
 exports.getIndex = (req, res, next) => {
     res.render('shop/index', {
         pageTitle: 'The Green', 
-        path: '/',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/'
     })
 }

@@ -1,7 +1,7 @@
 <div class="product-meta d-flex">
     <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
     <form action="/cart" method="POST" class="add-to-cart-btn add-to-cart-form">
-        
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <button type="submit">Add to cart</button>
         <input type="hidden" name="productId" value="<%= product._id %>">
     </form>

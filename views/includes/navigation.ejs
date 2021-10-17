@@ -37,7 +37,7 @@
                                 <% if (isAuthenticated) { %>
                                     <a href="/login"><i class="fa fa-user" aria-hidden="true"></i> 
                                         <form action="/logout" class="custom-log-out" method="POST">
-                                            
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                             <button type="submit">Log Out</button>
                                         </form>
                                     </a>

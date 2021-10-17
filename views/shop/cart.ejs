@@ -72,7 +72,7 @@
                                     <td class="total_price"><span>$<%= product.price %></span></td>
                                     <td class="action">
                                         <form action="/cart-delete-item" class="detele-cart-item-form" method="POST">
-                                            
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                             <input type="hidden" name="productId" value="<%= product._id %>">
                                             <button type="submit" title="Remove item"><i class="icon_close"></i></button>
                                         </form>
@@ -129,7 +129,7 @@
                             <h5>$9.99</h5>
                         </div>
                         <form class="checkout-btn" action="/create-order" method="POST">
-                            
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <button type="submit" class="btn alazea-btn w-100">PROCEED TO CHECKOUT</button>
                         </form>
                     </div>

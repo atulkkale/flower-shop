@@ -447,6 +447,25 @@ img {
     cursor: pointer;
     outline: none;
 }
+
+.custom-msg-general {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.custom-user-msg {
+    border: 1px solid #4771fa;
+    background-color: #b9c9ff;
+}
+
+.custom-user-msg-error {
+    border-color: red;
+    background: rgb(255, 176, 176);
+    color: red;
+}
 /* Custom css end. */
 
 .header-area .top-header-area .top-header-content .top-header-meta a, .custom-log-out button {

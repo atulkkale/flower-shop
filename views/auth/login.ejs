@@ -33,7 +33,9 @@
                     </div>
                 </div>
             </div>
-
+            <% if (errorMessage) { %>
+                <div class="custom-msg-general custom-user-msg custom-user-msg-error"><%= errorMessage %></div>
+            <% } %>
             <div class="limiter">
                 <div class="container-login100">
                     <div class="wrap-login100">
@@ -55,13 +57,13 @@
                                 <input class="input100" type="password" name="password">
                                 <span class="focus-input100" data-placeholder="Password"></span>
                             </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <div class="container-login100-form-btn">
                                 <div class="wrap-login100-form-btn">
                                     <div class="login100-form-bgbtn"></div>
                                     <button class="login100-form-btn" type="submit">Login</button>
                                 </div>
                             </div>
-                            
                             <div class="text-center donthave">
                                 <span class="txt1">Don’t have an account?</span>
                                 <a class="txt2" href="/signup">Sign Up</a>

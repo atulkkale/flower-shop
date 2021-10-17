@@ -3,8 +3,7 @@ const Product = require('../models/product')
 exports.getAdminHome = (req, res, next) => {
     res.render('admin/admin-home', {
         pageTitle: 'Admin',
-        path: '/admin',
-        isAuthenticated: req.session.isLoggedIn
+        path: '/admin'
     })
 }
 
@@ -12,8 +11,7 @@ exports.getAddProduct = (req, res, next) => {
     res.render('admin/edit-product', {
         pageTitle: 'Add products',
         path: '/admin/edit-product',
-        editing: false,
-        isAuthenticated: req.session.isLoggedIn
+        editing: false
     })
 }
 
@@ -41,8 +39,7 @@ exports.getAllProducts = (req, res, next) => {
         res.render('admin/all-products', {
             pageTitle: 'All products', 
             prods: products,
-            path: '/newshop',
-            isAuthenticated: req.session.isLoggedIn
+            path: '/newshop'
         })
     })
 }
@@ -59,8 +56,7 @@ exports.getEditProduct = (req, res, next) => {
             pageTitle: "Edit product",
             product: product,
             path: "/edit-product",
-            editing: true,
-            isAuthenticated: req.session.isLoggedIn
+            editing: true
         })
     })
 }
