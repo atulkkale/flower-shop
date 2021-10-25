@@ -2,11 +2,13 @@ const mongodb = require('mongodb')
 const getDb = require("../util/database").getDb
 
 class User {
-    constructor(username, email, password, cart, id) {
+    constructor(username, email, password, cart, resetToken, resetTokenExpiration, id) {
         this.name = username
         this.email = email
         this.password = password
         this.cart = cart
+        this.resetToken = resetToken
+        this.resetTokenExpiration = resetTokenExpiration
         this._id = id
     }
 
@@ -105,6 +107,15 @@ class User {
         .collection("orders")
         .find({ 'user._id': new mongodb.ObjectId(this._id) })
         .toArray()
+    }
+
+    updateUserById() {
+        const db = getDb()
+        return db.collection("users")
+        .updateOne(
+            { _id: new mongodb.ObjectId(this._id) },
+            { $set: this }
+        )
     }
 
     static findById(userId) {

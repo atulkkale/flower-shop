@@ -1,10 +1,12 @@
+const crypto = require('crypto')
+
 const bcrypt = require('bcryptjs')
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport')
 
 const transport = nodemailer.createTransport(sendgridTransport({
     auth: {
-        api_key: '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'
+        api_key: ''
     }
 }))
 
@@ -88,7 +90,7 @@ exports.postSignup = (req, res, next) => {
         }
         return bcrypt.hash(password, 12)
         .then(hashedPassword => {
-            const user = new User("Lorem", email, hashedPassword, { items: [] })
+            const user = new User("Lorem", email, hashedPassword, { items: [] }, null, null)
             return user.save()
         })
         .then(result => {
@@ -106,5 +108,55 @@ exports.postSignup = (req, res, next) => {
     })
     .catch(err => {
         console.log(err, "auth controller 38")
+    })
+}
+
+exports.getReset = (req, res, next) => {
+    let message = req.flash("error")
+    if (message.length > 0) {
+        message = message[0]
+    } else {
+        message = null
+    }
+    res.render('auth/reset', {
+        pageTitle: 'Reset Password',
+        path: '/reset',
+        errorMessage: message
+    })
+}
+
+exports.postReset = (req, res, next) => {
+    crypto.randomBytes(32, (err, buffer) => {
+        if (err) {
+            console.log(err)
+            return res.redirect("/")
+        }
+        const token = buffer.toString('hex')
+        User.findByEmail(req.body.email)
+        .then(user => {
+            if (!user) {
+                req.flash("error", "No account with that email found.")
+                return res.redirect("/reset")
+            }
+            user.resetToken = token
+            user.resetTokenExpiration = Date.now() + 3600000
+            const userWithMethods = new User("Lorem", user.email, user.password, user.cart, token, user.resetTokenExpiration, user._id)
+            return userWithMethods.updateUserById()
+        })
+        .then(result => {
+            res.redirect('/')
+            transport.sendMail({
+                to: req.body.email,
+                from: 'atulk@axioned.com',
+                subject: 'Reset password',
+                html: `
+                    <p>You requested a password reset</p>
+                    <p>Click this <a href='http://localhost:3000/reset/${token}'>link</a> to set a new password.</p>
+                `
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
     })
 }

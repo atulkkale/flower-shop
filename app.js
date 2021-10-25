@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     }
     User.findById(req.session.user._id)
         .then(user => {
-            req.user = new User(user.name, user.email, user.password, user.cart, user._id)
+            req.user = new User(user.name, user.email, user.password, user.cart, user.resetToken, user.resetTokenExpiration, user._id)
             next()
         })
         .catch(err => {
