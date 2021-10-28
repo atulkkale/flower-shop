@@ -466,6 +466,10 @@ img {
     background: rgb(255, 176, 176);
     color: red;
 }
+
+.custom-shop-details form button { padding: 10px 40px;}
+
+.custom-shop-details .wishlist-btn, .custom-shop-details .compare-btn { display: none;}
 /* Custom css end. */
 
 .header-area .top-header-area .top-header-content .top-header-meta a, .custom-log-out button {

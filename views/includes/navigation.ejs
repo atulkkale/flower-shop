@@ -96,7 +96,7 @@
                                         <li><a href="/portfolio">Portfolio</a></li>
                                     </ul>
                                 </li>
-                                <% if (isAuthenticated) { %>
+                                <% if (isAuthenticated && isAdmin) { %>
                                 <li><a href="/admin/admin-home">Admin</a></li>
                                 <% } %>
                                 <li><a href="/contact">Contact</a></li>

@@ -129,6 +129,18 @@ class User {
         return db.collection("users")
         .findOne({ email: email })
     }
+
+    static findByToken(token) {
+        const db = getDb()
+        return db.collection("users")
+        .findOne({ resetToken: token })
+    }
+
+    static findByTokenAnduserId(token, userId) {
+        const db = getDb()
+        return db.collection("users")
+        .findOne({ resetToken: token, _id: mongodb.ObjectId(userId) })
+    }
 }
 
 module.exports = User
