@@ -18,6 +18,12 @@ exports.getShop = (req, res, next) => {
             path: '/newshop'
         })
     })
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+    })
 }
 
 exports.getProductById = (req, res, next) => {
@@ -30,6 +36,12 @@ exports.getProductById = (req, res, next) => {
             prod: product
         })
     })
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+    })
 }
 
 exports.getCart = (req, res, next) => {
@@ -40,6 +52,12 @@ exports.getCart = (req, res, next) => {
             path: '/Cart',
             products: products
         })
+    })
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
     })
 }
 
@@ -53,6 +71,12 @@ exports.postCart = (req, res, next) => {
         console.log(result,"c-shop,42")
         res.redirect("/cart")
     })
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+    })
 }
 
 exports.postCartDeleteProduct = (req, res, next) => {
@@ -64,6 +88,9 @@ exports.postCartDeleteProduct = (req, res, next) => {
     })
     .catch(err => {
         console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
     })
 }
 
@@ -73,7 +100,12 @@ exports.postOrder = (req, res, next) => {
     .then(result => {
         res.redirect("/orders")
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+    })
 }
 
 exports.getOrders = (req, res, next) => {
@@ -85,7 +117,12 @@ exports.getOrders = (req, res, next) => {
             orders: orders
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+    })
 }
 
 exports.getPortfolio = (req, res, next) => {

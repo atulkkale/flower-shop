@@ -362,3 +362,11 @@ products styling from home templeate start.
 /* ========================================
 products styling from home templeate end.
 ===========================================*/
+
+/* ========================================
+custom css starts here.
+===========================================*/
+.invalid { border: 1px solid red;}
+/* ========================================
+custom css ends here.
+===========================================*/

@@ -23,9 +23,9 @@ class Product {
         }
         return dbOp
         .then(result => {
-            console.log(result)
+            console.log("Product created Or updated,")
         }).catch(err => {   
-            console.log(err)
+            throw new Error(err)
         })
     }
 
@@ -33,7 +33,6 @@ class Product {
         const db = getDb()
         return db.collection('products').find().toArray()
         .then(products => {
-            console.log(products)
             return products
         })
         .catch(err => {
