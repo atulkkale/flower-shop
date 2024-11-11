@@ -2,10 +2,16 @@ const crypto = require('crypto')
 
 const bcrypt = require('bcryptjs')
 const nodemailer = require('nodemailer')
-const sendgridTransport = require('nodemailer-sendgrid-transport')
+const sendGridTransport = require('nodemailer-sendgrid-transport')
 const { validationResult } = require('express-validator')
 
+const options = {
+    auth: {
+        api_key: process.env.SENDGRID_API_KEY
+    }
+}
 
+const transport = nodemailer.createTransport(sendGridTransport(options));
 
 const User = require("../models/user")
 
@@ -150,7 +156,7 @@ exports.postSignup = (req, res, next) => {
             res.redirect("/login")
             return transport.sendMail({
                 to: email,
-                from: 'atulk@axioned.com',
+                from: process.env.FROM_EMAIL,
                 subject: 'Signup succeeded!',
                 html: '<h1>You successfully signed up!</h1>'
             })
@@ -199,7 +205,7 @@ exports.postReset = (req, res, next) => {
             res.redirect('/') 
             transport.sendMail({
                 to: req.body.email,
-                from: 'atulk@axioned.com',
+                from: process.env.FROM_EMAIL,
                 subject: 'Reset password',
                 html: `
                     <p>You requested a password reset</p>
