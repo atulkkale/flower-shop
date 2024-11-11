@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path')
 
 const express = require('express')
@@ -18,7 +19,7 @@ const authRoutes = require('./routes/auth')
 
 const app = express()
 const store = new mongoDBStore({
-    uri: 'mongodb+srv://atulkkale:prdxn389@cluster0.h94h0.mongodb.net/shop?retryWrites=true&w=majority',
+    uri: process.env.MONGO_DB_URI,
     collection: 'sessions'
 })
 const csrfProtection = csrf()
@@ -93,5 +94,5 @@ app.use((error, req, res, next) => {
 })
 
 mongoConnect(() => {
-    app.listen(3000)
+    app.listen(process.env.PORT)
 })
