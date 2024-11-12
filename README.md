@@ -14,7 +14,7 @@ This project provides a full-featured flower shop application, including an admi
 - **Password Recovery**: Users can reset their password if forgotten.
 - **Form Validation**: All forms are validated to ensure proper data entry.
 - **Cart Functionality**: Only logged-in users can add items to their cart.
-- **Hosting**: The app is hosted on [Render](https://render.com/). Due to Render’s free hosting plan, the site may take up to 60 seconds to load after periods of inactivity.
+- **Hosting**: The app is hosted on [Render](https://render.com/). Due to Render’s free hosting plan, the site may take up to 60 seconds or more to load after periods of inactivity.
 
 ## Technologies Used
 
@@ -56,7 +56,7 @@ npm start
 
 You can access the deployed app on Render [here](https://flower-shop-dphr.onrender.com).
 
-*`Note: Due to Render’s free hosting plan, it may take up to 60 seconds to load the site after periods of inactivity.`*
+*`Note: Due to Render’s free hosting plan, it may take up to 60 seconds or more to load the site after periods of inactivity.`*
 
 
 ## Future Improvements
