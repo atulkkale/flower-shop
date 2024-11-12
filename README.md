@@ -42,7 +42,7 @@ cd flower-shop
 npm install
 ```
 
-3. Set up environment variables in a .env file, including MONGO_DB_URI, PORT=3000, SENDGRID_API_KEY, and FROM_EMAIL.
+3. Set up environment variables in a .env file, including MONGO_DB_URI, PORT=3000, SENDGRID_API_KEY, FROM_EMAIL, and ADMIN_EMAIL.
 
 4. Run the app:
 
