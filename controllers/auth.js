@@ -69,7 +69,7 @@ exports.postLogin = (req, res, next) => {
         bcrypt.compare(password, user.password)
         .then(doMatch => {
             if (doMatch) {
-                if (user.email === "admin@admin.com") {
+                if (user.email === process.env.ADMIN_EMAIL) {
                     req.session.isAdmin = true
                 }
                 req.session.isLoggedIn = true
